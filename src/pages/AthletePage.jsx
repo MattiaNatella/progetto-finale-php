@@ -37,9 +37,9 @@ const AthletePage = () => {
             }}>
                 <div className="row g-0">
                     <div className="col text-white">
-                        <h5 className="card-title">Schede allenamento di {athlete?.name} {athlete?.surname}</h5>
+                        <h5 className="card-title">Schede allenamento di <strong>{athlete?.name} {athlete?.surname}</strong></h5>
                         <ol className="my-5">
-                            {athlete?.workouts?.map((workout, index) => (<li key={index} className="my-4"><strong>{workout?.name} </strong><button className="btn btn-success" onClick={() => handleClick(workout)}>Visualizza scheda</button></li>))}
+                            {athlete?.workouts?.map((workout, index) => (<li key={index} className="my-4"><strong style={{ color: 'yellow' }}>{workout?.name} </strong><button className="btn btn-success" onClick={() => handleClick(workout)}>Visualizza scheda</button></li>))}
                         </ol>
                         <p className="card-text"><small className="text-body-secondary">Last updated 3 mins ago</small></p>
                     </div>
@@ -56,7 +56,7 @@ const AthletePage = () => {
                 }}>
                     <div className="row g-0">
                         <div className="col text-white">
-                            <h5 className="card-title">Esercizi scheda di allenamento <strong style={{ color: '#440603' }}>{selectedWorkout.name}</strong></h5>
+                            <h5 className="card-title">Esercizi scheda di allenamento <strong style={{ color: 'yellow' }}>{selectedWorkout.name}</strong></h5>
                             <ol className="my-5">
                                 {selectedWorkout.exercises.map((exercise, index) => (<li key={index} className="my-4">{exercise.name} Serie {exercise.pivot.sets} - Reps {exercise.pivot.reps} Note: {exercise.pivot.notes}</li>))}
                             </ol>
@@ -65,7 +65,7 @@ const AthletePage = () => {
                     </div>
                 </div>)
 
-                : (<h1>Clicca su una scheda per visualizzare gli esercizi</h1>)}
+                : (<h2 className="text-white">Clicca sul tasto "Visualizza scheda" per consultare gli esercizi relativi</h2>)}
         </div>
     )
 }

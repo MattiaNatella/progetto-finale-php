@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react'
+import axios from 'axios';
 
 
 const GlobalContext = createContext();
@@ -12,7 +13,7 @@ const GlobalProvider = ({ children }) => {
     const fetchData = () => {
         axios.get(import.meta.env.VITE_API_URL)
             .then((res) => {
-                setAthletes(res.data)
+                setAthletes(res.data.data)
             })
             .catch((err) => console.log(err))
     }
@@ -26,9 +27,9 @@ const GlobalProvider = ({ children }) => {
 
     //inserisco value come prop nell'attributo value del provider
     return (
-        <GlobalProvider.Provider value={value}>
+        <GlobalContext.Provider value={value}>
             {children}
-        </GlobalProvider.Provider>
+        </GlobalContext.Provider>
     );
 };
 
@@ -36,4 +37,4 @@ const useGlobalContext = () => {
     return useContext(GlobalContext);
 };
 
-export { useGlobalContext, GlobalContext };
+export { useGlobalContext, GlobalProvider };

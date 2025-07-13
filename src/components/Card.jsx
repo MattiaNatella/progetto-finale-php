@@ -1,13 +1,23 @@
-import React from 'react';
+
 import styled from 'styled-components';
 
-const Card = () => {
+const Card = ({ athlete }) => {
     return (
         <StyledWrapper>
             <div className="book">
-                <p>Hello</p>
+                <div className="d-flex flex-column">
+
+
+                    <span className='book-text'>
+                        Peso Iniziale: {athlete.initial_weight}kg
+                    </span>
+                    <span className='book-text'>
+                        Altezza: {athlete.height_cm}cm
+                    </span>
+                </div>
                 <div className="cover">
-                    <p>Hover Me</p>
+                    <p>{athlete.name} {athlete.surname}</p>
+                    <img src={athlete.image} />
                 </div>
             </div>
         </StyledWrapper>
@@ -75,7 +85,12 @@ const StyledWrapper = styled.div`
   }
 
   p {
-    font-size: 20px;
+    font-size: 15px;
+    font-weight: bolder;
+  }
+  span {
+  text-align: right;
+    font-size: 11px;
     font-weight: bolder;
   }`;
 

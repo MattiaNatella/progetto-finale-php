@@ -1,30 +1,31 @@
 
 import styled from 'styled-components';
+import DetailButton from '../partials/DetailButton';
 
 const Card = ({ athlete }) => {
 
-    const imageUrl = athlete.image
-        ? `http://127.0.0.1:8000/storage/${athlete.image}`
-        : null;
+  const imageUrl = athlete.image
+    ? `http://127.0.0.1:8000/storage/${athlete.image}`
+    : null;
 
-    return (
-        <StyledWrapper image={imageUrl}>
-            <div className="book">
-                <div className="d-flex flex-column">
-                    <span className='book-text'>
-                        Peso Iniziale: {athlete.initial_weight}kg
-                    </span>
-                    <span className='book-text'>
-                        Altezza: {athlete.height_cm}cm
-                    </span>
-                    <button className='btn btn-info border-black my-2 w-100'>Dettagli</button>
-                </div>
-                <div className="cover">
-                    <p className='nome-atleta'>{athlete.name} {athlete.surname}</p>
-                </div>
-            </div>
-        </StyledWrapper>
-    );
+  return (
+    <StyledWrapper $image={imageUrl}>
+      <div className="book">
+        <div className="d-flex flex-column align-items-end gap-3">
+          <span className='book-text'>
+            Peso Iniziale: {athlete.initial_weight}kg
+          </span>
+          <span className='book-text'>
+            Altezza: {athlete.height_cm}cm
+          </span>
+          <DetailButton athlete={athlete} />
+        </div>
+        <div className="cover">
+          <p className='nome-atleta'>{athlete.name} {athlete.surname}</p>
+        </div>
+      </div>
+    </StyledWrapper>
+  );
 }
 
 const StyledWrapper = styled.div`

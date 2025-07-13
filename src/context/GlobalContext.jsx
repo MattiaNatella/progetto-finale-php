@@ -8,6 +8,7 @@ const GlobalProvider = ({ children }) => {
 
     //variabile di stato degli atleti
     const [athletes, setAthletes] = useState([])
+    const [athlete, setAthlete] = useState([])
 
     //funzione per il fetch dei dati
     const fetchData = () => {
@@ -18,11 +19,22 @@ const GlobalProvider = ({ children }) => {
             .catch((err) => console.log(err))
     }
 
+    //funzione per trovare il singolo atleta
+    const findAthlete = (id) => {
+        const findAthlete = athletes.find(element => (
+            element.id == id
+        ))
+        setAthlete(findAthlete);
+    }
+
     //variabile value che conterrà tutti i dati da trasferire agli altri componenti
     const value = {
         fetchData,
         athletes,
-        setAthletes
+        setAthletes,
+        athlete,
+        setAthlete,
+        findAthlete
     }
 
     //inserisco value come prop nell'attributo value del provider

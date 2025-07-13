@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 const HomePage = () => {
 
-    const { fetchData, athletes, setAthletes } = useGlobalContext();
+    const { fetchData, athletes } = useGlobalContext();
 
     useEffect(() => {
         fetchData();
@@ -16,7 +16,7 @@ const HomePage = () => {
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
                 {athletes.map((athlete, index) => (
 
-                    <div className="col justify-content-center my-3" key={index}>
+                    <div className="col my-3" key={index}>
                         <Card athlete={athlete} />
                     </div>
 

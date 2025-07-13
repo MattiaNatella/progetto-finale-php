@@ -19,10 +19,10 @@ const AthletePage = () => {
 
     //funzione che gestisce il click del bottone visualizza scheda
     const handleClick = (workout) => {
-        console.log(workout)
+        // console.log(workout)
         setSelectedWorkout(workout)
         setCheckExercises(true)
-        console.log(selectedWorkout)
+        // console.log(selectedWorkout)
     }
 
     // console.log(athlete)
@@ -35,13 +35,22 @@ const AthletePage = () => {
                 maxWidth: '540px',
                 background: '#291612'
             }}>
-                <div className="row g-0">
-                    <div className="col text-white">
-                        <h5 className="card-title">Schede allenamento di <strong>{athlete?.name} {athlete?.surname}</strong></h5>
+                <div className="row text-white">
+                    <div className="col details border-right">
+                        <h5>Dati atleta <strong>{athlete?.name} {athlete?.surname}</strong></h5>
+                        <ul className="my-5">
+                            <li><strong>Email:</strong> {athlete?.email}</li>
+                            <li><strong>Telefono</strong> {athlete?.telephone}</li>
+                            <li><strong>Note:</strong> {athlete?.notes}</li>
+                            <li><strong>Peso Iniziale:</strong> {athlete?.initial_weight}</li>
+                            <li><strong>Altezza:</strong> {athlete?.height_cm}</li>
+                        </ul>
+                    </div>
+                    <div className="col">
+                        <h5 className="card-title">Schede allenamento: </h5>
                         <ol className="my-5">
                             {athlete?.workouts?.map((workout, index) => (<li key={index} className="my-4"><strong style={{ color: 'yellow' }}>{workout?.name} </strong><button className="btn btn-success" onClick={() => handleClick(workout)}>Visualizza scheda</button></li>))}
                         </ol>
-                        <p className="card-text"><small className="text-body-secondary">Last updated 3 mins ago</small></p>
                     </div>
                 </div>
             </div>
@@ -65,7 +74,7 @@ const AthletePage = () => {
                     </div>
                 </div>)
 
-                : (<h2 className="text-white">Clicca sul tasto "Visualizza scheda" per consultare gli esercizi relativi</h2>)}
+                : (<h3 className="text-white">Clicca sul tasto "Visualizza scheda" per consultare gli esercizi relativi</h3>)}
         </div>
     )
 }

@@ -9,7 +9,7 @@ const Card = ({ athlete }) => {
     : null;
 
   return (
-    <StyledWrapper $image={imageUrl}>
+    <StyledWrapper image={imageUrl}>
       <div className="book">
         <div className="d-flex flex-column align-items-end gap-3">
           <span className='book-text'>
